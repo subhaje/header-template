@@ -1,0 +1,74 @@
+{
+  "footer": {
+    "sections": [
+      {
+        "title": "Products",
+        "links": [
+          "Roof Mounted Fans",
+          "Wall Mounted Fans",
+          "Inline Fans",
+          "Overhead Fans",
+          "Circulators",
+          "Gravity Ventilators",
+          "Dampers",
+          "Energy Recovery",
+          "Ventilators",
+          "Accessories",
+          "Residential",
+          "Ventilation Solutions",
+          "Parts"
+        ]
+      },
+      {
+        "title": "Building Type",
+        "links": [
+          "K-12 School",
+          "Healthcare Facility",
+          "Higher Education",
+          "Manufacturing",
+          "Multi-Family",
+          "Laboratory"
+        ]
+      },
+      {
+        "title": "Resources",
+        "links": [
+          "Resource Library",
+          "Videos",
+          "Blog",
+          "Catalogs",
+          "Installation Manuals",
+          "Case Studies",
+          "Specifications",
+          "Application Articles",
+          "Software"
+        ]
+      },
+      {
+        "title": "Education",
+        "links": [
+          "HVAC University",
+          "Online Training"
+        ]
+      },
+      {
+        "title": "Support",
+        "links": [
+          "Pre-Construction",
+          "Post-Construction",
+          "Contact Us"
+        ]
+      },
+      {
+        "title": "About Us",
+        "links": [
+          "Overview",
+          "Philosophy",
+          "Facilities",
+          "Global Manufacturing",
+          "Legal"
+        ]
+      }
+    ]
+  }
+}

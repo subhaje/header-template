@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Visits</title>
+    <link rel="stylesheet" href="./common.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&URL_ADDRESS"
+    />
+    <style>
+      .font-16 {
+        font-size: 16px;
+      }
+      .customer-visits {
+        background-color: var(--color-primary);
+        padding: 31px 39px 39px 39px;
+        color: var(--color-white);
+        max-width: 405px;
+        display: flex;
+        gap: 6px;
+        flex-direction: column;
+      }
+      .customer-visits h2 {
+        font-family: var(--font-family-helvetic-condensed-bold);
+        font-size: 30px;
+        font-weight: 700;
+        padding: 0;
+        margin: 0;
+      }
+      .customer-visits p {
+        font-family: var(--font-family-helvetic-condensed);
+        font-size: 22px;
+        font-weight: 400;
+        padding: 0;
+        margin: 0 0 21px 0;
+        display: inline-block;
+      }
+      .customer-visits a {
+        font-family: var(--font-family-helvetic-condensed-bold);
+        background-color: var(--color-orange);
+        padding: 5px 21px;
+        border-radius: 7px;
+        border: 1px solid var(--color-white);
+        text-transform: uppercase;
+        color: var(--color-white);
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 700;
+        display: flex;
+        width: fit-content;
+        gap: 9px;
+        align-items: center;
+      }
+      .customer-visits a:hover {
+        text-decoration: none;
+        background-color: var(--color-white);
+        color: var(--color-orange);
+      }
+      .start-a-new-reservation,
+      .continue-with-an-existing-reservation {
+        color: var(--color-white);
+        padding: 40px 40px 30px 40px;
+        font-family: var(--font-family-helvetic-ce);
+        max-width: 609px;
+      }
+      .start-a-new-reservation {
+        background-color: var(--color-light-blue);
+      }
+      .continue-with-an-existing-reservation {
+        background-color: var(--color-primary);
+      }
+      .start-a-new-reservation h2,
+      .continue-with-an-existing-reservation h2 {
+        font-family: var(--font-family-helvetic-ce);
+        font-size: 25px;
+        font-weight: 700;
+        padding: 0;
+        margin: 0 0 19px 0;
+      }
+      .start-a-new-reservation p,
+      .continue-with-an-existing-reservation p {
+        font-size: 18px;
+        font-weight: 400;
+        padding: 0;
+        margin: 0 0 33px 0;
+      }
+      .start-a-new-reservation a,
+      .continue-with-an-existing-reservation a {
+        background-color: var(--color-white);
+        padding: 8px 30px;
+        border-radius: 18px;
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+        text-decoration: none;
+        font-size: 18px;
+        display: flex;
+        width: fit-content;
+        gap: 9px;
+        align-items: center;
+      }
+      .start-a-new-reservation a:hover,
+      .continue-with-an-existing-reservation a:hover {
+        text-decoration: none;
+        background-color: var(--color-primary);
+        border-color: var(--color-white);
+        color: var(--color-white);
+      }
+      .customer-visit-planner {
+        font-family: var(--font-family-helvetic-ce);
+        color: var(--color-dark-gray);
+        font-weight: 500;
+        font-size: 41px;
+        padding: 0;
+        margin: 0 0 19px 0;
+      }
+      .visits-title {
+        font-family: var(--font-family-helvetic-ce);
+        color: var(--color-dark-gray);
+        font-weight: 500;
+        font-size: 36px;
+        padding: 0;
+        margin: 0 0 19px 0;
+      }
+      .visits-title-description {
+        font-family: var(--font-family-helvetic-ce);
+        color: var(--color-dark-gray);
+        font-weight: 500;
+        font-size: 22px;
+        padding: 0;
+        margin: 0 0 19px 0;
+      }
+      .cancel-visit {
+        font-family: var(--font-family-helvetic-ce);
+        color: var(--color-dark-gray);
+        font-weight: 500;
+        font-size: 18px;
+        padding: 0;
+        margin: 0 0 19px 0;
+      }
+      .cancel-visit a {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="customer-visits" aria-label="Customer Visit Planner">
+      <h2>Customer Visit Planner</h2>
+      <p>Reserve a new visit or continue planning an existing one.</p>
+      <a href="#"
+        >ACCESS THE PLANNER NOW
+        <span class="material-symbols-outlined font-16"> open_in_new </span></a
+      >
+    </article>
+    <p class="customer-visit-planner">Customer Visit Planner</p>
+    <h1 class="visits-title">Start a new reservation or continue an existing one</h1>
+    <p class="visits-title-description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc faucibus urna nibh, quis
+      sollicitudin mi suscipit.
+    </p>
+    <article class="start-a-new-reservation" aria-label="Start a new reservation">
+      <h2>Start a new reservation</h2>
+      <p>Reserve a new visit and enter attendee information.</p>
+      <a href="#"> Start a reservation </a>
+    </article>
+    <article
+      class="continue-with-an-existing-reservation"
+      aria-label="Continue with an existing reservation"
+    >
+      <h2>Continue with an existing reservation</h2>
+      <p>Complete entering visitor information and continue planning</p>
+      <a href="#"> Continue reservation </a>
+    </article>
+    <!-- class name is cancel-visit -->
+    <p class="cancel-visit">
+      Need to cancel a visit? Please contact
+      <a href="mailto:customervisit@greenheck.com">customervisit@greenheck.com</a>
+    </p>
+  </body>
+</html>

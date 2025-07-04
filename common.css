@@ -1,0 +1,99 @@
+:root {
+  --color-light-blue: #00a8e4;
+  --color-black: #000;
+  --color-orange: #d97a24;
+  --color-gray: #333;
+  --color-light-gray: #666;
+  /* #57585A */
+  --color-dark-gray: #57585a;
+  --color-primary: #075697;
+  --color-white: #fff;
+  --border-radius: 21px;
+  --font-family-helvetic-ce: 'HelveticaCE', sans-serif;
+  --font-family-helvetic-condensed-bold: 'Helvetica-Condensed-Bold', sans-serif;
+  --font-family-helvetic-condensed: 'Helvetica-Condensed', sans-serif;
+  --font-family-helvetic-ce-bold: 'HelveticaCE-CondBold', sans-serif;
+  --font-size-base: 14px;
+  --font-size-nav: 18px;
+  --transition-base: all 0.2s ease-in-out;
+  --max-width-container: 1248px;
+  --color-bg-popup: #f7f8fa;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Font Definitions */
+@font-face {
+  font-family: 'Helvetica-Bold';
+  src: url('./fonts/Helvetica-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica-Condensed-Black';
+  src: url('./fonts/Helvetica-Condensed-Black.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica-Condensed-Bold';
+  src: url('./fonts/Helvetica-Condensed-Bold.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica-Condensed';
+  src: url('./fonts/Helvetica-Condensed.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica-Narrow-Bold';
+  src: url('./fonts/Helvetica-Narrow-Bold.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica-Narrow-Oblique';
+  src: url('./fonts/Helvetica-Narrow-Oblique.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('./fonts/Helvetica.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HelveticaCE-CondBold';
+  src: url('./fonts/HelveticaCE-CondBold.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HelveticaCE-Narrow';
+  src: url('./fonts/HelveticaCE-Narrow.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HelveticaCE';
+  src: url('./fonts/HelveticaCE.otf') format('opentype'),
+    url('./fonts/HelveticaCE.woff') format('woff'), url('./fonts/HelveticaCE.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HelveticaConBQ-Medium';
+  src: url('./fonts/HelveticaConBQ-Medium.otf') format('opentype');
+  font-display: swap;
+}
+
+.material-symbols-outlined {
+  font-size: 22px !important;
+}

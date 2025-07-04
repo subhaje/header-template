@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Greenheck Responsive Footer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        --color-black: #00000;
+        --color-gray: #333;
+        --color-light-gray: #666;
+        --color-primary: #075697;
+        --color-white: #fff;
+        --border-radius: 21px;
+        --font-family-base: 'HelveticaCE', sans-serif;
+        --font-size-base: 14px;
+        --font-size-nav: 18px;
+        --transition-base: all 0.2s ease-in-out;
+        --max-width-container: 1248px;
+        --color-bg-popup: #f7f8fa;
+        --footer-bg: #f8f8f8;
+        --footer-text: #222;
+        --footer-link: #222;
+        --footer-link-hover: #0072ce;
+        --footer-heading: #222;
+        --footer-border: #e5e5e5;
+        --footer-logo-blue: #0072ce;
+        --footer-social-bg: #222;
+        --footer-social-icon: #fff;
+        --footer-careers-border: #0072ce;
+        --footer-careers-text: #0072ce;
+        --footer-careers-hover-bg: #0072ce;
+        --footer-careers-hover-text: #fff;
+        --footer-font: 'Inter', Arial, sans-serif;
+      }
+
+      html {
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      /* Font Definitions */
+      @font-face {
+        font-family: 'Helvetica-Bold';
+        src: url('./fonts/Helvetica-Bold.ttf') format('truetype');
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Helvetica-Condensed-Black';
+        src: url('./fonts/Helvetica-Condensed-Black.otf') format('opentype');
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Helvetica-Condensed-Bold';
+        src: url('./fonts/Helvetica-Condensed-Bold.otf') format('opentype');
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Helvetica-Condensed';
+        src: url('./fonts/Helvetica-Condensed.otf') format('opentype');
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Helvetica-Narrow-Bold';
+        src: url('./fonts/Helvetica-Narrow-Bold.otf') format('opentype');
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Helvetica-Narrow-Oblique';
+        src: url('./fonts/Helvetica-Narrow-Oblique.otf') format('opentype');
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Helvetica';
+        src: url('./fonts/Helvetica.otf') format('opentype');
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'HelveticaCE-CondBold';
+        src: url('./fonts/HelveticaCE-CondBold.otf') format('opentype');
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'HelveticaCE-Narrow';
+        src: url('./fonts/HelveticaCE-Narrow.otf') format('opentype');
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'HelveticaCE';
+        src: url('./fonts/HelveticaCE.otf') format('opentype'),
+          url('./fonts/HelveticaCE.woff') format('woff'),
+          url('./fonts/HelveticaCE.woff2') format('woff2');
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'HelveticaConBQ-Medium';
+        src: url('./fonts/HelveticaConBQ-Medium.otf') format('opentype');
+        font-display: swap;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--footer-font);
+        background: #fff;
+        color: var(--footer-text);
+      }
+
+      footer {
+        background: var(--footer-bg);
+        padding: 0;
+        margin: 0;
+        border-top: 30px solid #075697;
+      }
+
+      .footer-info {
+        font-size: 12px;
+      }
+
+      .footer-info a:after {
+        content: '|';
+        margin-left: 12px;
+      }
+      .footer-info a:last-child::after {
+        content: none;
+      }
+
+      .footer-heading {
+        font-family: var(--font-family-base);
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 26px;
+        color: var(--footer-heading);
+        letter-spacing: 0.01em;
+        margin-top: 0px;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-link {
+        display: block;
+        color: var(--footer-link);
+        text-decoration: none;
+        font-size: 14px;
+        margin-bottom: 20px;
+        transition: color 0.2s;
+      }
+      .footer-link:hover,
+      .footer-link:focus {
+        color: var(--footer-link-hover);
+        outline: none;
+      }
+
+      /* Accordion styles (hidden on desktop) */
+      .footer-accordion-btn {
+        font-family: var(--font-family-base);
+        display: none;
+        width: 100%;
+        background: none;
+        border: none;
+        text-align: left;
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--footer-heading);
+        padding: 20px 16px 20px 0;
+        cursor: pointer;
+        position: relative;
+        outline: none;
+      }
+      .footer-accordion-btn .icon {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        transition: transform 0.2s;
+      }
+      .footer-accordion-btn[aria-expanded='true'] .icon {
+        transform: translateY(-50%) rotate(180deg);
+      }
+
+      .footer-accordion-panel {
+        display: block;
+        padding: 0 0 16px 0;
+        border: none;
+        background: none;
+        margin: 0;
+      }
+
+      /* Footer bottom */
+      .footer-bottom {
+        /* background-color: #ffffff; */
+        /* margin-top: 48px; */
+        padding: 32px 32px 24px 32px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 24px;
+        max-width: 1248px;
+        margin: 0 auto;
+      }
+
+      .footer-bottom-color {
+        background-color: #ffffff;
+      }
+
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-logo svg {
+        width: 48px;
+        height: 48px;
+        display: block;
+      }
+      .footer-logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--footer-logo-blue);
+        letter-spacing: 0.01em;
+        line-height: 1.1;
+      }
+      .footer-logo-slogan {
+        font-size: 0.95rem;
+        color: #222;
+        margin-top: 2px;
+        font-weight: 400;
+      }
+
+      .footer-careers {
+        border: 1px solid var(--footer-careers-border);
+        color: var(--footer-careers-text);
+        background: #fff;
+        border-radius: 21px;
+        padding: 10px 32px;
+        font-size: 18px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+      }
+      .footer-careers:hover,
+      .footer-careers:focus {
+        background: var(--footer-careers-hover-bg);
+        color: var(--footer-careers-hover-text);
+        outline: none;
+      }
+
+      .footer-social {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .footer-social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 29px;
+        height: 29px;
+        background: var(--footer-social-bg);
+        border-radius: 50%;
+        color: var(--footer-social-icon);
+        text-decoration: none;
+        font-size: 1.3rem;
+        transition: background 0.2s;
+      }
+      .footer-social-link:hover,
+      .footer-social-link:focus {
+        background: var(--footer-link-hover);
+        outline: none;
+      }
+
+      /* .footer-info {
+        font-size: 0.95rem;
+        color: #444;
+        margin-top: 8px;
+        margin-bottom: 0;
+        line-height: 1.6;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      } */
+      .footer-info-links,
+      .footer-info-contact {
+        display: flex;
+        flex-direction: row;
+        gap: 11px;
+      }
+      .footer-contact-group {
+        gap: 11px;
+      }
+      .footer-info a {
+        color: var(--footer-link);
+        text-decoration: none;
+        margin: 0;
+        transition: color 0.2s;
+      }
+      .footer-info a:hover,
+      .footer-info a:focus {
+        color: var(--footer-link-hover);
+        outline: none;
+      }
+      .footer-copyright {
+        font-size: 12px;
+        color: #333333;
+        /* margin-top: 8px;
+        margin-bottom: 0; */
+        max-width: 1248px;
+        margin: 0 auto;
+        padding-left: 48px;
+      }
+
+      /* Tablet styles */
+      @media (min-width: 768px) and (max-width: 1023px) {
+        .footer-info-contact {
+          display: flex;
+          flex-direction: row;
+          gap: 0.5rem;
+          width: fit-content;
+        }
+
+        .footer-contact-group {
+          display: flex;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .footer-address {
+          /* flex 1 is for full width right? */
+          flex: 1 1 0;
+          width: 100%;
+          text-align: center;
+          margin-bottom: 12px;
+        }
+        .footer-bottom-main {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+          gap: 32px;
+          width: auto;
+          margin: 0 90px;
+        }
+        .footer-main {
+          display: flex;
+          flex-direction: column;
+          padding: 0 8px;
+          max-width: 696px;
+          gap: 2px;
+          width: 100%;
+          margin: 45px auto;
+        }
+        .footer-section {
+          background-color: #ffffff;
+          padding: 0 20px;
+        }
+        .site-footer__logo {
+          height: 44px;
+        }
+        .footer-logo {
+          justify-content: center;
+          order: 1;
+        }
+        .footer-heading {
+          display: none;
+        }
+
+        .footer-accordion-panel[aria-hidden='false'] {
+          display: block;
+        }
+        .footer-accordion-panel {
+          display: none;
+          padding: 0 0 16px 0;
+          background: none;
+        }
+
+        .footer-accordion-btn {
+          display: block;
+          width: 100%;
+          background: none;
+          border: none;
+          text-align: left;
+          font-size: 1.15rem;
+          font-weight: 600;
+          color: var(--footer-heading);
+          padding: 16px 0;
+          cursor: pointer;
+          position: relative;
+          outline: none;
+          border-radius: 0;
+          /* border-bottom: 1px solid var(--footer-border); */
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 20px;
+          padding: 24px 8px 16px 8px;
+          margin-top: 0;
+        }
+        .footer-brand {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+        .footer-careers {
+          width: 100%;
+          text-align: center;
+        }
+        .footer-social {
+          gap: 10px;
+        }
+        .footer-info {
+          flex-direction: column;
+          gap: 0;
+          margin-top: 0;
+          display: flex;
+          align-items: center;
+          order: 3;
+          width: 100%;
+          
+          font-weight: 400;
+        }
+        .footer-social-container {
+          order: 2;
+          display: flex;
+          gap: 24px;
+        }
+        .footer-info-links {
+          display: flex;
+          flex-direction: row;
+          gap: 11px;
+          align-items: center;
+        }
+        .footer-copyright {
+          margin-top: 8px;
+          padding: 0;
+          text-align: center;
+         
+        }
+
+        .footer-links {
+          font-size: 14px;
+          display: flex;
+          flex-direction: column;
+          
+        }
+      }
+
+      @media (min-width: 1023px) and (max-width: 1033px) {
+        .footer-info-links {
+          display: flex;
+          flex-direction: row;
+          gap: 7px;
+        }
+      }
+
+      /* Mobile styles */
+      @media (max-width: 768px) {
+        
+        .footer-bottom {
+          padding: 35px 20px;
+          margin: 0 auto;
+          display: block;
+        }
+        .footer-copyright {
+          padding: 3px 15px;
+          text-align: center;
+
+          max-width: 240px;
+        }
+        .footer-info a:after {
+          content: none;
+        }
+
+        .footer-info-contact a:nth-child(2):after {
+              content: '|';
+            }
+        
+        .footer-accordion-panel[aria-hidden='false'] {
+          display: block;
+        }
+        .footer-accordion-panel {
+          display: none;
+          padding: 0 0 16px 0;
+          background: none;
+        }
+
+        .footer-link {
+              line-height: 18px;
+        }
+
+        .footer-section {
+          background-color: #ffffff;
+          padding: 0 20px;
+        }
+
+        .footer-main {
+          display: flex;
+          flex-direction: column;
+          padding: 0 8px;
+          gap: 2px;
+          width: calc(100% - 40px);
+          margin: 45px 20px;
+        }
+        .site-footer__logo {
+          max-height: 44px;
+        }
+
+        .footer-bottom-main {
+          display: flex;
+          flex-direction: column;
+          gap: 37px;
+          align-items: center;
+         
+        }
+
+        .footer-logo {
+          order: 1;
+        }
+
+        .footer-social-container {
+          order: 2;
+          display: flex;
+          gap: 24px;
+        }
+
+        .footer-info {
+          flex-direction: column;
+          display: flex;
+          order: 3;
+          gap: 24px;
+        }
+
+        .footer-info-links {
+        
+          flex-direction: column;
+          align-items: center;
+          gap: 23px;
+        }
+
+        .footer-info-contact {
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 288px;
+        flex-direction: row;
+        gap: 11px;
+        }
+      }
+      
+
+      @media (min-width: 1024px) {
+        .footer-main {
+          max-width: 1248px;
+          margin: 0 auto;
+          padding: 40px 36px 12px 52px;
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          gap: 32px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 32px 32px 0 50px;
+          }
+        .footer-bottom-main {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+
+          gap: 32px;
+          width: 100%;
+        }
+
+        .site-footer__logo {
+          width: 180px;
+          height: 44px;
+        }
+
+        .footer-social-container {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 24px;
+          margin-left: auto;
+        }
+        .footer-copyright {
+          text-align: left;
+          margin-top: 32px;
+          margin-bottom: 0;
+          
+          color: #333333;
+        }
+        .footer-info {
+          margin-top: 8px;
+          margin-bottom: 0;
+          flex-wrap: wrap;
+          gap: 8px 16px;
+          /* font-size: 12px; */
+          color: #444;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <footer>
+      <nav class="footer-main" aria-label="Footer">
+        <!-- Products -->
+        <section class="footer-section">
+          <button
+            class="footer-accordion-btn"
+            aria-expanded="false"
+            aria-controls="footer-panel-products"
+            id="footer-accordion-products"
+          >
+            Products
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <h2 class="footer-heading">Products</h2>
+          <div
+            class="footer-accordion-panel"
+            id="footer-panel-products"
+            role="region"
+            aria-labelledby="footer-accordion-products"
+            aria-hidden="true"
+          >
+            <ul class="footer-links">
+              <li><a class="footer-link" href="#">Roof Mounted Fans</a></li>
+              <li><a class="footer-link" href="#">Wall Mounted Fans</a></li>
+              <li><a class="footer-link" href="#">Inline Fans</a></li>
+              <li><a class="footer-link" href="#">Overhead Fans</a></li>
+              <li><a class="footer-link" href="#">Circulators</a></li>
+              <li><a class="footer-link" href="#">Gravity Ventilators</a></li>
+              <li><a class="footer-link" href="#">Dampers</a></li>
+              <li><a class="footer-link" href="#">Energy Recovery</a></li>
+              <li><a class="footer-link" href="#">Ventilators</a></li>
+              <li><a class="footer-link" href="#">Accessories</a></li>
+              <li><a class="footer-link" href="#">Residential</a></li>
+              <li><a class="footer-link" href="#">Ventilation Solutions</a></li>
+              <li><a class="footer-link" href="#">Parts</a></li>
+            </ul>
+          </div>
+        </section>
+        <!-- Building Type -->
+        <section class="footer-section">
+          <button
+            class="footer-accordion-btn"
+            aria-expanded="false"
+            aria-controls="footer-panel-building"
+            id="footer-accordion-building"
+          >
+            Building Type
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <h2 class="footer-heading">Building Type</h2>
+          <div
+            class="footer-accordion-panel"
+            id="footer-panel-building"
+            role="region"
+            aria-labelledby="footer-accordion-building"
+            aria-hidden="true"
+          >
+            <ul class="footer-links">
+              <li><a class="footer-link" href="#">K-12 School</a></li>
+              <li><a class="footer-link" href="#">Healthcare Facility</a></li>
+              <li><a class="footer-link" href="#">Higher Education</a></li>
+              <li><a class="footer-link" href="#">Manufacturing</a></li>
+              <li><a class="footer-link" href="#">Multi-Family</a></li>
+              <li><a class="footer-link" href="#">Laboratory</a></li>
+            </ul>
+          </div>
+        </section>
+        <!-- Resources -->
+        <section class="footer-section">
+          <button
+            class="footer-accordion-btn"
+            aria-expanded="false"
+            aria-controls="footer-panel-resources"
+            id="footer-accordion-resources"
+          >
+            Resources
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <h2 class="footer-heading">Resources</h2>
+          <div
+            class="footer-accordion-panel"
+            id="footer-panel-resources"
+            role="region"
+            aria-labelledby="footer-accordion-resources"
+            aria-hidden="true"
+          >
+            <ul class="footer-links">
+              <li><a class="footer-link" href="#">Resource Library</a></li>
+              <li><a class="footer-link" href="#">Videos</a></li>
+              <li><a class="footer-link" href="#">Blog</a></li>
+              <li><a class="footer-link" href="#">Catalogs</a></li>
+              <li><a class="footer-link" href="#">Installation Manuals</a></li>
+              <li><a class="footer-link" href="#">Case Studies</a></li>
+              <li><a class="footer-link" href="#">Specifications</a></li>
+              <li><a class="footer-link" href="#">Application Articles</a></li>
+              <li><a class="footer-link" href="#">Software</a></li>
+            </ul>
+          </div>
+        </section>
+        <!-- Education -->
+        <section class="footer-section">
+          <button
+            class="footer-accordion-btn"
+            aria-expanded="false"
+            aria-controls="footer-panel-education"
+            id="footer-accordion-education"
+          >
+            Education
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <h2 class="footer-heading">Education</h2>
+          <div
+            class="footer-accordion-panel"
+            id="footer-panel-education"
+            role="region"
+            aria-labelledby="footer-accordion-education"
+            aria-hidden="true"
+          >
+            <ul class="footer-links">
+              <li><a class="footer-link" href="#">HVAC University</a></li>
+              <li><a class="footer-link" href="#">Online Training</a></li>
+            </ul>
+          </div>
+        </section>
+        <!-- Support -->
+        <section class="footer-section">
+          <button
+            class="footer-accordion-btn"
+            aria-expanded="false"
+            aria-controls="footer-panel-support"
+            id="footer-accordion-support"
+          >
+            Support
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <h2 class="footer-heading">Support</h2>
+          <div
+            class="footer-accordion-panel"
+            id="footer-panel-support"
+            role="region"
+            aria-labelledby="footer-accordion-support"
+            aria-hidden="true"
+          >
+            <ul class="footer-links">
+              <li><a class="footer-link" href="#">Pre-Construction</a></li>
+              <li><a class="footer-link" href="#">Post-Construction</a></li>
+              <li><a class="footer-link" href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </section>
+        <!-- About Us -->
+        <section class="footer-section">
+          <button
+            class="footer-accordion-btn"
+            aria-expanded="false"
+            aria-controls="footer-panel-about"
+            id="footer-accordion-about"
+          >
+            About Us
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <h2 class="footer-heading">About Us</h2>
+          <div
+            class="footer-accordion-panel"
+            id="footer-panel-about"
+            role="region"
+            aria-labelledby="footer-accordion-about"
+            aria-hidden="true"
+          >
+            <ul class="footer-links">
+              <li><a class="footer-link" href="#">Overview</a></li>
+              <li><a class="footer-link" href="#">Philosophy</a></li>
+              <li><a class="footer-link" href="#">Facilities</a></li>
+              <li><a class="footer-link" href="#">Global Manufacturing</a></li>
+              <li><a class="footer-link" href="#">Legal</a></li>
+            </ul>
+          </div>
+        </section>
+      </nav>
+      <div class="footer-bottom-color">
+        <div class="footer-bottom">
+          <div class="footer-bottom-main">
+            <div class="footer-logo">
+              <!-- Greenheck Logo -->
+              <img
+                src="imgs/Greenheck_Logo_Horizontal_Blue.png"
+                alt="Greenheck"
+                class="site-footer__logo"
+              />
+            </div>
+            <div class="footer-info">
+              <div class="footer-info-links">
+                <a href="#">Shipping</a>
+                <a href="#">Terms &amp; Conditions</a>
+                <a href="#">Compliance Policies</a>
+                <a href="#">Privacy Statement</a>
+              </div>
+              <div class="footer-info-contact">
+                <a class="footer-address" href="#">P.O. Box 410 Schofield, WI 54476</a>
+                <a href="#">(715) 359-6171</a>
+                <a href="#">Contact Us</a>
+                <!-- <div class="footer-contact-group">
+                
+              </div> -->
+              </div>
+            </div>
+            <div class="footer-social-container">
+              <a href="#" class="footer-careers">Careers</a>
+              <div class="footer-social">
+                <a href="#" class="footer-social-link" aria-label="LinkedIn">
+                  <!-- LinkedIn SVG -->
+                  <svg
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="#fff"
+                  >
+                    <path
+                      d="M6.1 10H2.5v12h3.6V10zm-1.8-6C3.1 4 2 5.1 2 6.5S3.1 9 4.3 9s2.3-1.1 2.3-2.5S5.5 4 4.3 4zm9.2 6h-3.6v12h3.6v-6.5c0-1.6.6-2.7 2.1-2.7s2.1 1.1 2.1 2.7V22h3.6v-6.9c0-3.5-1.9-5.1-4.5-5.1-2 0-2.9 1.1-3.4 1.9V10z"
+                    />
+                  </svg>
+                </a>
+                <a href="#" class="footer-social-link" aria-label="Facebook">
+                  <!-- Facebook SVG -->
+                  <svg width="20" height="20" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M18.896 0H1.104C.494 0 0 .494 0 1.104v17.792C0 19.506.494 20 1.104 20h9.583v-7.745H8.077V9.237h2.61V7.077c0-2.587 1.582-3.997 3.892-3.997 1.107 0 2.057.082 2.334.119v2.707h-1.602c-1.256 0-1.5.597-1.5 1.474v1.933h3l-.391 3.018h-2.609V20h5.116c.61 0 1.104-.494 1.104-1.104V1.104C20 .494 19.506 0 18.896 0"
+                    />
+                  </svg>
+                </a>
+                <a href="#" class="footer-social-link" aria-label="YouTube">
+                  <!-- YouTube SVG -->
+                  <svg width="20" height="20" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M19.615 5.184a2.5 2.5 0 0 0-1.76-1.76C16.18 3 10 3 10 3s-6.18 0-7.855.424a2.5 2.5 0 0 0-1.76 1.76C0 6.86 0 10 0 10s0 3.14.385 4.816a2.5 2.5 0 0 0 1.76 1.76C3.82 17 10 17 10 17s6.18 0 7.855-.424a2.5 2.5 0 0 0 1.76-1.76C20 13.14 20 10 20 10s0-3.14-.385-4.816zM8 13V7l6 3-6 3z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          &copy; 2025 Greenheck Fan Corporation. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Accordion functionality for mobile/tablet
+      (function () {
+        const mq = window.matchMedia('(max-width: 1023px)');
+        const accordionBtns = Array.from(document.querySelectorAll('.footer-accordion-btn'));
+        const panels = Array.from(document.querySelectorAll('.footer-accordion-panel'));
+
+        function closeAll() {
+          accordionBtns.forEach(btn => {
+            btn.setAttribute('aria-expanded', 'false');
+            btn.querySelector('.icon').textContent = '+';
+          });
+          panels.forEach(panel => {
+            panel.setAttribute('aria-hidden', 'true');
+          });
+        }
+
+        function openPanel(idx) {
+          accordionBtns[idx].setAttribute('aria-expanded', 'true');
+          accordionBtns[idx].querySelector('.icon').textContent = '−';
+          panels[idx].setAttribute('aria-hidden', 'false');
+        }
+
+        function handleAccordionClick(e) {
+          const idx = accordionBtns.indexOf(e.currentTarget);
+          const expanded = e.currentTarget.getAttribute('aria-expanded') === 'true';
+          closeAll();
+          if (!expanded) {
+            openPanel(idx);
+          }
+        }
+
+        function handleAccordionKeydown(e) {
+          const idx = accordionBtns.indexOf(e.currentTarget);
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            accordionBtns[(idx + 1) % accordionBtns.length].focus();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            accordionBtns[(idx - 1 + accordionBtns.length) % accordionBtns.length].focus();
+          } else if (e.key === 'Home') {
+            e.preventDefault();
+            accordionBtns[0].focus();
+          } else if (e.key === 'End') {
+            e.preventDefault();
+            accordionBtns[accordionBtns.length - 1].focus();
+          } else if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleAccordionClick.call(e.currentTarget, e);
+          }
+        }
+
+        function updateAccordionDisplay() {
+          if (mq.matches) {
+            // Show accordion, hide headings
+            accordionBtns.forEach(btn => (btn.style.display = 'block'));
+            document.querySelectorAll('.footer-heading').forEach(h => (h.style.display = 'none'));
+          } else {
+            // Hide accordion, show headings
+            accordionBtns.forEach(btn => (btn.style.display = 'none'));
+            panels.forEach(panel => {
+              panel.setAttribute('aria-hidden', 'false');
+            });
+            document.querySelectorAll('.footer-heading').forEach(h => (h.style.display = 'block'));
+          }
+        }
+
+        accordionBtns.forEach((btn, idx) => {
+          btn.addEventListener('click', handleAccordionClick);
+          btn.addEventListener('keydown', handleAccordionKeydown);
+        });
+
+        // On load, open the first section on mobile/tablet
+        function initAccordion() {
+          if (mq.matches) {
+            closeAll();
+          } else {
+            closeAll();
+            panels.forEach(panel => panel.setAttribute('aria-hidden', 'false'));
+          }
+          updateAccordionDisplay();
+        }
+
+        mq.addEventListener('change', initAccordion);
+        window.addEventListener('DOMContentLoaded', initAccordion);
+        window.addEventListener('resize', updateAccordionDisplay);
+      })();
+    </script>
+  </body>
+</html>

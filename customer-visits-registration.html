@@ -1,0 +1,933 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="common.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&URL_ADDRESS"
+    />
+    <style>
+      .content-wrapper {
+        max-width: 1249px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .customer-visit-table {
+        font-family: var(--font-family-helvetic-ce);
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 24px;
+      }
+      .customer-visit-table th {
+        font-weight: 500;
+        padding: 12px 20px;
+        border: 1px solid #075697;
+        text-align: left;
+      }
+      .customer-visit-table tr {
+        border: 1px solid #979797;
+      }
+      .customer-visit-table td {
+        padding: 24px 21px 24px 21px !important;
+        font-size: 18px;
+      }
+      .customer-visit-table td b {
+        font-size: 20px;
+      }
+      .customer-visit-table th {
+        background: #075697;
+        color: #fff;
+        font-size: 18px;
+      }
+      .customer-visit-table td {
+        background: #fff;
+        color: #222;
+        font-size: 16px;
+      }
+      .group-availability-link {
+        color: #075697;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 20px;
+      }
+      .reserve-btn {
+        background: #075697;
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        padding: 10px 30px;
+        height: 42px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .reserve-btn:hover {
+        background: #00335a;
+      }
+      /* Delete */
+      .start-a-new-reservation,
+      .continue-with-an-existing-reservation {
+        color: var(--color-white);
+        padding: 40px 40px 30px 40px;
+        font-family: var(--font-family-helvetic-ce);
+        max-width: 609px;
+      }
+      .start-a-new-reservation {
+        background-color: var(--color-light-blue);
+      }
+      .continue-with-an-existing-reservation {
+        background-color: var(--color-primary);
+      }
+      .start-a-new-reservation h2,
+      .continue-with-an-existing-reservation h2 {
+        font-family: var(--font-family-helvetic-ce);
+        font-size: 25px;
+        font-weight: 700;
+        padding: 0;
+        margin: 0 0 19px 0;
+      }
+      .start-a-new-reservation p,
+      .continue-with-an-existing-reservation p {
+        font-size: 18px;
+        font-weight: 400;
+        padding: 0;
+        margin: 0 0 33px 0;
+      }
+      .start-a-new-reservation a,
+      .continue-with-an-existing-reservation a {
+        background-color: var(--color-white);
+        padding: 8px 30px;
+        border-radius: 18px;
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+        text-decoration: none;
+        font-size: 18px;
+        display: flex;
+        width: fit-content;
+        gap: 9px;
+        align-items: center;
+      }
+      .start-a-new-reservation a:hover,
+      .continue-with-an-existing-reservation a:hover {
+        text-decoration: none;
+        background-color: var(--color-primary);
+        border-color: var(--color-white);
+        color: var(--color-white);
+      }
+      .visits-title {
+        font-family: var(--font-family-helvetic-ce);
+        color: var(--color-dark-gray);
+        font-weight: 500;
+        font-size: 36px;
+        padding: 0;
+        margin: 0 0 19px 0;
+      }
+      .visits-title-description {
+        font-family: var(--font-family-helvetic-ce);
+        color: var(--color-dark-gray);
+        font-weight: 500;
+        font-size: 22px;
+        padding: 0;
+        margin: 0 0 19px 0;
+      }
+      .reserve-btn-outline {
+        border: 1px solid #075697;
+        background: #fff;
+        color: #075697;
+        border-radius: 21px;
+        padding: 10px 30px;
+        height: 42px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+      }
+      .reserve-btn-outline:hover {
+        background: #075697;
+        color: #fff;
+      }
+      .selected-visit-actions {
+        margin-top: 42px;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+      .selected-visit-back {
+        margin-top: 24px;
+        color: #075697;
+        font-size: 16px;
+        text-decoration: none;
+        font-family: var(--font-family-helvetic-ce-bold);
+        font-weight: 700;
+        display: block;
+        cursor: pointer;
+        text-align: center;
+      }
+      .selected-visit-back:hover {
+        text-decoration: underline;
+      }
+      .centered-block {
+        text-align: center;
+      }
+      .customer-account-form {
+        font-family: var(--font-family-helvetic-ce);
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .customer-account-form h2 {
+        font-size: 19px;
+        font-family: var(--font-family-helvetic-ce-bold);
+        margin-bottom: 33px;
+        text-align: left;
+      }
+      .account-label {
+        display: block;
+        font-size: 14px;
+        font-family: var(--font-family-helvetic-ce);
+        margin-bottom: 8px;
+        text-align: left;
+      }
+      .account-select {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 6px;
+        border: 1px solid #333333;
+        margin-bottom: 8px;
+      }
+      .account-info {
+        color: #969696;
+        font-size: 14px;
+        margin-bottom: 37px;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        user-select: none;
+        font-weight: 500;
+      }
+      .account-info .material-symbols-outlined {
+        font-size: 15px !important;
+        vertical-align: middle;
+      }
+      .account-info.expanded {
+        color: #222;
+        font-weight: 700;
+      }
+      .account-info-fields {
+        margin-bottom: 24px;
+        animation: fadeIn 0.2s;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .account-info-label {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 6px;
+        text-align: left;
+        display: block;
+      }
+      .account-info-input,
+      .account-info-textarea,
+      .account-info-select {
+        width: 100%;
+        font-size: 16px;
+        border: 1px solid #333333;
+        border-radius: 6px;
+        padding: 10px;
+        margin-bottom: 18px;
+        font-family: inherit;
+        resize: none;
+        box-sizing: border-box;
+      }
+      .account-info-textarea {
+        min-height: 60px;
+        max-height: 120px;
+      }
+      .account-info-charcount {
+        font-size: 13px;
+        color: #333333;
+        float: right;
+        margin-top: -28px;
+        margin-bottom: 10px;
+      }
+      .not-found {
+        margin: 0 0 49px 0;
+        text-align: left;
+        font-size: 17px;
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+      }
+      .create-account-link {
+        color: #075697;
+        font-size: 14px;
+        text-decoration: underline;
+        font-weight: 500;
+      }
+      .create-account-link .material-icon-md {
+        font-size: 18px !important;
+      }
+      .customer-account-actions {
+        display: flex;
+        gap: 20px;
+        padding-left: 8px;
+      }
+      .progress-bar {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 32px;
+        margin-top: 24px;
+        justify-content: center;
+      }
+      .progress-step {
+        background: #e5e7eb;
+        color: #333333;
+        padding: 10px 32px;
+        border-radius: 24px;
+        font-size: 22px;
+        font-family: var(--font-family-helvetic-ce-bold);
+        font-weight: 700;
+      }
+      .progress-step.active {
+        background: #075697;
+        color: #fff;
+      }
+      .material-icon-md {
+        font-size: 24px;
+        color: #075697;
+        vertical-align: middle;
+      }
+      .account-list {
+        border: 1px solid #333333;
+        border-radius: 8px;
+        max-height: 260px;
+        overflow-y: auto;
+        background: #fff;
+        margin-bottom: 16px;
+      }
+      .account-list-item {
+        display: flex;
+        align-items: center;
+        padding: 16px 24px;
+        cursor: pointer;
+        font-size: 20px;
+        transition: background 0.2s;
+      }
+      .account-list-item.selected {
+        background: #f5f5f5;
+      }
+      .account-list-item input[type='checkbox'] {
+        appearance: none;
+        width: 28px;
+        height: 28px;
+        border: 2px solid #bdbdbd;
+        border-radius: 6px;
+        margin-right: 18px;
+        background: #fff;
+        position: relative;
+        cursor: pointer;
+      }
+      .account-list-item input[type='checkbox']:checked {
+        background: #333333;
+        border-color: #333333;
+      }
+      .account-list-item input[type='checkbox']:checked::after {
+        content: '';
+        display: block;
+        width: 14px;
+        height: 14px;
+        background: #fff;
+        border-radius: 3px;
+        position: absolute;
+        top: 6px;
+        left: 6px;
+      }
+      .account-list-name {
+        font-size: 20px;
+      }
+      .account-dropdown {
+        position: relative;
+        width: 100%;
+        margin-bottom: 14px;
+      }
+      .account-dropdown-field {
+        border: 1px solid #333333;
+        border-radius: 4px;
+        padding: 10px 15px;
+        font-size: 15px;
+        background: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        min-height: 42px;
+        transition: border-color 0.2s;
+        font-family: var(--font-family-helvetic-ce);
+        font-weight: 500;
+      }
+      .account-dropdown-field.open {
+        border-color: #075697;
+        box-shadow: 0 2px 8px rgba(7, 86, 151, 0.08);
+      }
+      .account-dropdown-arrow {
+        position: absolute;
+        right: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 28px;
+        color: #333333;
+        pointer-events: none;
+      }
+      .account-dropdown-list {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        z-index: 10;
+        background: #fff;
+        border: 1px solid #333333;
+        border-radius: 4px;
+        max-height: 260px;
+        overflow-y: auto;
+        margin-top: 4px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        padding: 0;
+        gap: 0;
+      }
+
+      .account-dropdown-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 24px;
+        cursor: pointer;
+        font-size: 15px;
+        transition: background 0.2s;
+        border-radius: 0;
+        width: 100%;
+      }
+      .account-dropdown-item.selected,
+      .account-dropdown-item:hover {
+        background: #f5f5f5;
+      }
+      .account-dropdown-checkbox {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #979797;
+        border-radius: 4px;
+        margin-right: 18px;
+        background: #fff;
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: middle;
+        transition: border-color 0.2s, background 0.2s;
+      }
+      .account-dropdown-checkbox:checked {
+        background: #969696;
+        border-color: #979797;
+      }
+      .account-dropdown-checkbox:checked::after {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 5px;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        position: absolute;
+        left: 3px;
+        top: 4px;
+        transform: rotate(-45deg);
+      }
+      .account-dropdown-label {
+        color: #333;
+        font-family: var(--font-family-helvetic-ce-bold);
+        font-size: 15px;
+        font-weight: 700;
+        font-style: bold;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 6px;
+      }
+      .account-dropdown-city {
+        color: #333;
+        font-family: var(--font-family-helvetic-ce);
+        font-size: 15px;
+        font-weight: 500;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .account-dropdown-selected {
+        font-weight: 700;
+        font-size: 20px;
+      }
+      .account-dropdown-placeholder {
+        color: #333333;
+        font-weight: 400;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <article class="start-a-new-reservation" aria-label="Start a new reservation">
+        <h2>Start a new reservation</h2>
+        <p>Reserve a new visit and enter attendee information.</p>
+        <a href="#"> Start a reservation </a>
+      </article>
+
+      <h1 class="visits-title">Select a New Customer Visit</h1>
+      <p class="visits-title-description">Reserve a new visit from the availability below.</p>
+      <div id="customer-visit-table-container"></div>
+    </div>
+    <script>
+      // Table configuration
+      const tableConfig = {
+        columns: [
+          { key: 'date', label: 'Date' },
+          { key: 'location', label: 'Location' },
+          { key: 'visitDuration', label: 'Visit Duration' },
+          { key: 'groupAvailability', label: 'Group Availability' },
+          { key: 'actions', label: '' },
+        ],
+      };
+
+      const selectedVisitTableConfig = {
+        columns: [
+          { key: 'date', label: 'Date' },
+          { key: 'location', label: 'Location' },
+          { key: 'visitDuration', label: 'Visit Duration' },
+          {
+            key: 'groupAvailability',
+            label: 'Number of Groups',
+            tooltip: 'Number of groups available',
+          },
+        ],
+      };
+
+      // Data for the table
+      const customerVisitAvailability = [
+        {
+          id: '1',
+          date: '2025-07-21',
+          location: 'Schofield, WI',
+          visitDuration: 'Monday Arrival; Wednesday Departure',
+          groupAvailability: 2,
+        },
+        {
+          id: '2',
+          date: '2025-07-23',
+          location: 'Schofield, WI',
+          visitDuration: 'Wednesday Arrival; Friday Departure',
+          groupAvailability: 1,
+        },
+        {
+          id: '3',
+          date: '2025-07-28',
+          location: 'Schofield, WI',
+          visitDuration: 'Monday Arrival; Wednesday Departure',
+          groupAvailability: 2,
+        },
+        {
+          id: '4',
+          date: '2025-08-04',
+          location: 'Schofield, WI',
+          visitDuration: 'Monday Arrival; Wednesday Departure',
+          groupAvailability: 2,
+        },
+        {
+          id: '5',
+          date: '2025-08-27',
+          location: 'Schofield, WI',
+          visitDuration: 'Wednesday Arrival; Friday Departure',
+          groupAvailability: 3,
+        },
+      ];
+
+      const customerAccounts = [
+        { id: 1, name: 'Michaud Cooley Erickson', city: 'Minneapolis, MN' },
+        { id: 2, name: 'TMS Johnson', city: 'Minneapolis, MN' },
+        { id: 3, name: 'Northland Mechanical', city: 'Minneapolis, MN' },
+        { id: 4, name: 'Absolute Mechanical', city: 'Minneapolis, MN' },
+        { id: 5, name: 'Steiner Plumbing Electric & Heating', city: 'Minneapolis, MN' },
+      ];
+
+      const viewStates = {
+        table: {
+          title: 'Select a New Customer Visit',
+          description: 'Reserve a new visit from the availability below.',
+        },
+        selected: {
+          title: 'Selected Visit',
+          description: 'You may proceed to enter customer details or reserve and',
+        },
+      };
+
+      // Customer Visit Table Class
+      class CustomerVisitTable {
+        constructor(config, data) {
+          this.config = config;
+          this.data = data;
+        }
+
+        renderTableHeader() {
+          return `
+            <tr>
+                ${this.config.columns
+                  .map(
+                    col =>
+                      `<th${col.key === 'actions' ? ' style="width:120px;"' : ''}>${col.label}</th>`
+                  )
+                  .join('')}
+            </tr>
+            `;
+        }
+
+        renderTableRow(row) {
+          return `
+            <tr>
+                <td><b>${this.formatDate(row.date)}</b></td>
+                <td>${row.location}</td>
+                <td><b>${row.visitDuration}</b></td>
+                <td>
+                <a href="#" class="group-availability-link">
+                    ${row.groupAvailability} group${row.groupAvailability > 1 ? 's' : ''} available
+                </a>
+                </td>
+                <td>
+                <button class="reserve-btn" data-id="${row.id}">Reserve</button>
+                </td>
+            </tr>
+            `;
+        }
+
+        formatDate(dateStr) {
+          // Format as MM/DD/YYYY
+          const d = new Date(dateStr);
+          return d.toLocaleDateString('en-US');
+        }
+
+        render() {
+          return `
+            <table class="customer-visit-table">
+                <thead>${this.renderTableHeader()}</thead>
+                <tbody>
+                ${this.data.map(row => this.renderTableRow(row)).join('')}
+                </tbody>
+            </table>
+            `;
+        }
+      }
+
+      class SelectedVisitTable {
+        constructor(config, row, formatDate) {
+          this.config = config;
+          this.row = row;
+          this.formatDate = formatDate;
+        }
+
+        renderTableHeader() {
+          return `
+            <tr>
+              ${this.config.columns
+                .map(
+                  col =>
+                    `<th>
+                      ${col.label}
+                      ${
+                        col.tooltip
+                          ? `<span title="${col.tooltip}" style="cursor:help;">&#9432;</span>`
+                          : ''
+                      }
+                    </th>`
+                )
+                .join('')}
+            </tr>
+          `;
+        }
+
+        renderTableRow() {
+          const row = this.row;
+          return `
+            <tr>
+              <td><b>${this.formatDate(row.date)}</b></td>
+              <td>${row.location}</td>
+              <td><b>${row.visitDuration}</b></td>
+              <td><b>${row.groupAvailability} group${row.groupAvailability > 1 ? 's' : ''}</b></td>
+            </tr>
+          `;
+        }
+
+        render() {
+          return `
+            <table class="customer-visit-table">
+              <thead>${this.renderTableHeader()}</thead>
+              <tbody>
+                ${this.renderTableRow()}
+              </tbody>
+            </table>
+          `;
+        }
+      }
+
+      // Customer Visit Controller Class
+      class CustomerVisitController {
+        constructor() {
+          this.config = tableConfig;
+          this.data = customerVisitAvailability;
+          this.table = new CustomerVisitTable(this.config, this.data);
+          this.init();
+        }
+
+        init() {
+          document.querySelector('.start-a-new-reservation a').addEventListener('click', e => {
+            e.preventDefault();
+            this.showAvailabilityPage();
+          });
+        }
+
+        showAvailabilityPage() {
+          this.updateViewState('table');
+          document.getElementById('customer-visit-table-container').innerHTML = this.table.render();
+          this.attachReserveHandlers();
+        }
+
+        showSelectedVisitSummary(selectedRow) {
+          this.updateViewState('selected');
+          const selectedTable = new SelectedVisitTable(
+            selectedVisitTableConfig,
+            selectedRow,
+            this.table.formatDate
+          );
+          document.getElementById('customer-visit-table-container').innerHTML = `
+            ${selectedTable.render()}
+            <div class="selected-visit-actions">
+              <button class="reserve-btn-outline">Reserve & Complete Later</button>
+              <button class="reserve-btn" id="select-customer-account-btn">Select Customer Account</button>
+            </div>
+            <div class="centered-block">
+              <a href="#" id="back-link" class="selected-visit-back">&lt; Back</a>
+            </div>
+          `;
+
+          document.getElementById('back-link').addEventListener('click', e => {
+            e.preventDefault();
+            this.showAvailabilityPage();
+          });
+
+          // Wire up Select Customer Account button
+          document.getElementById('select-customer-account-btn').addEventListener('click', () => {
+            this.lastSelectedRow = selectedRow;
+            this.showCustomerAccountStep();
+          });
+        }
+
+        showCustomerAccountStep() {
+          document.querySelector('.visits-title').textContent = 'Customer Account';
+          document.querySelector('.visits-title-description').textContent = '';
+
+          this.selectedAccountIds = this.selectedAccountIds || [];
+          this.accountDropdownOpen = this.accountDropdownOpen || false;
+          this.accountInfoExpanded = this.accountInfoExpanded || false;
+          this.accountInfoFields = this.accountInfoFields || {
+            yearEstablished: '',
+            additionalLocations: '',
+            projectFocus: '',
+            areasOfInterest: '',
+          };
+
+          document.getElementById('customer-visit-table-container').innerHTML = `
+            <div class="progress-bar">
+              <div class="progress-step active">Customer account</div>
+              <div class="progress-step">Attendees</div>
+              <div class="progress-step">Rep Attendees</div>
+              <div class="progress-step">Travel Info</div>
+              <div class="progress-step">Summary</div>
+            </div>
+            <div class="customer-account-form">
+              <h2>Select Customer Account</h2>
+              <label class="account-label">Select customer account(s)</label>
+              ${this.renderAccountDropdown()}
+              <div class="account-info${
+                this.accountInfoExpanded ? ' expanded' : ''
+              }" id="account-info-toggle">
+                <span class="material-symbols-outlined">${
+                  this.accountInfoExpanded ? 'remove_circle' : 'add_circle'
+                }</span>
+                Additional account information
+              </div>
+              ${this.accountInfoExpanded ? this.renderAccountInfoFields() : ''}
+              <div class="not-found">
+                <b>Not finding the account you're looking for?</b>
+                <div>
+                  <a href="#" class="create-account-link">
+                    <span class="material-symbols-outlined material-icon-md">person_add</span>
+                    Create a customer account
+                  </a>
+                </div>
+              </div>
+              <div class="customer-account-actions">
+                <button class="reserve-btn-outline">Save & Complete Later</button>
+                <button class="reserve-btn">Next, add an Attendee</button>
+              </div>
+              <div class="centered-block">
+                <a href="#" id="back-link" class="selected-visit-back">&lt; Back</a>
+              </div>
+            </div>
+          `;
+
+          // Dropdown open/close logic
+          const dropdownField = document.getElementById('account-dropdown-field');
+          if (dropdownField) {
+            dropdownField.addEventListener('click', e => {
+              e.stopPropagation();
+              this.accountDropdownOpen = !this.accountDropdownOpen;
+              this.showCustomerAccountStep();
+            });
+          }
+          // Prevent dropdown from closing when clicking inside the dropdown list
+          const dropdownList = document.querySelector('.account-dropdown-list');
+          if (dropdownList) {
+            dropdownList.addEventListener('click', e => {
+              e.stopPropagation();
+            });
+          }
+          // Handle outside click to close dropdown
+          if (this.accountDropdownOpen) {
+            setTimeout(() => {
+              document.addEventListener(
+                'click',
+                (this._closeDropdownHandler = () => {
+                  this.accountDropdownOpen = false;
+                  this.showCustomerAccountStep();
+                  document.removeEventListener('click', this._closeDropdownHandler);
+                })
+              );
+            }, 0);
+          }
+
+          // Checkbox logic
+          document.querySelectorAll('.account-dropdown-item input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', e => {
+              const id = Number(cb.value);
+              if (cb.checked) {
+                if (!this.selectedAccountIds.includes(id)) this.selectedAccountIds.push(id);
+              } else {
+                this.selectedAccountIds = this.selectedAccountIds.filter(i => i !== id);
+              }
+              this.showCustomerAccountStep();
+            });
+          });
+
+          // Toggle additional account info
+          document.getElementById('account-info-toggle').addEventListener('click', () => {
+            this.accountInfoExpanded = !this.accountInfoExpanded;
+            this.showCustomerAccountStep();
+          });
+
+          document.getElementById('back-link').addEventListener('click', e => {
+            e.preventDefault();
+            this.showSelectedVisitSummary(this.lastSelectedRow);
+          });
+        }
+
+        attachReserveHandlers() {
+          document.querySelectorAll('.reserve-btn').forEach(btn => {
+            btn.addEventListener('click', e => {
+              const selectedId = btn.dataset.id;
+              const selectedRow = this.data.find(row => row.id === selectedId);
+              this.showSelectedVisitSummary(selectedRow);
+            });
+          });
+        }
+
+        updateViewState(stateKey) {
+          document.querySelector('.visits-title').textContent = viewStates[stateKey].title;
+          document.querySelector('.visits-title-description').textContent =
+            viewStates[stateKey].description;
+        }
+
+        renderAccountDropdown() {
+          return `
+            <div class="account-dropdown">
+              <div class="account-dropdown-field${
+                this.accountDropdownOpen ? ' open' : ''
+              }" id="account-dropdown-field" tabindex="0">
+                <span class="account-dropdown-placeholder">Select</span>
+                <span class="material-symbols-outlined account-dropdown-arrow">${
+                  this.accountDropdownOpen ? 'expand_less' : 'expand_more'
+                }</span>
+              </div>
+              ${
+                this.accountDropdownOpen
+                  ? `<div class="account-dropdown-list">
+                      
+                      ${customerAccounts
+                        .map(
+                          acc => `
+                        <label class="account-dropdown-item${
+                          this.selectedAccountIds.includes(acc.id) ? ' selected' : ''
+                        }">
+                          <input type="checkbox" value="${
+                            acc.id
+                          }" class="account-dropdown-checkbox" ${
+                            this.selectedAccountIds.includes(acc.id) ? 'checked' : ''
+                          } />
+                          <span class="custom-checkbox"></span>
+                          <span class="account-dropdown-label">${acc.name}</span>
+                          <span class="account-dropdown-city">- ${acc.city}</span>
+                        </label>
+                      `
+                        )
+                        .join('')}
+                    </div>`
+                  : ''
+              }
+            </div>
+          `;
+        }
+
+        renderAccountInfoFields() {
+          return `
+            <div class="account-info-fields">
+              <label class="account-info-label" for="year-established">Year Established</label>
+              <input class="account-info-input" id="year-established" type="text" value="${this.accountInfoFields.yearEstablished}" maxlength="4" />
+
+              <label class="account-info-label" for="additional-locations">Additional Location(s)</label>
+              <textarea class="account-info-textarea" id="additional-locations" placeholder="City and State…">${this.accountInfoFields.additionalLocations}</textarea>
+
+              <label class="account-info-label" for="project-focus">Company or project focus</label>
+              <span class="account-info-charcount" id="project-focus-charcount">${this.accountInfoFields.projectFocus.length}/250</span>
+              <textarea class="account-info-textarea" id="project-focus" maxlength="250" placeholder="Type here…">${this.accountInfoFields.projectFocus}</textarea>
+
+              <label class="account-info-label" for="areas-of-interest">Select areas of interest</label>
+              <select class="account-info-select" id="areas-of-interest">
+                <option value="">Select</option>
+                <option value="hvac">HVAC</option>
+                <option value="plumbing">Plumbing</option>
+                <option value="electrical">Electrical</option>
+              </select>
+            </div>
+          `;
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        new CustomerVisitController();
+      });
+    </script>
+  </body>
+</html>
